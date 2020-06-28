@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>keyboard_control</name>
+  <version>0.1.0</version>
+  <description>Control your machine via keyboard</description>
+
+  <maintainer email="cepsatro@gmail.com">Thomas Pittalis</maintainer>
+
+  <license>GPLv3</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>geometry_msgs</build_depend>
+
+  <depend>rospy</depend>
+
+</package>
