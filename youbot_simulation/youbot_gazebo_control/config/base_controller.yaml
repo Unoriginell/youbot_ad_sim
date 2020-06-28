@@ -1,13 +1,13 @@
 base_controller:
   pid_gains:
-    wheel_joint_fl: {p: 100.0, i: 0.0, d: 1.0}
-    caster_joint_fl: {p: 100.0, i: 0.0, d: 1.0}
-    wheel_joint_fr: {p: 100.0, i: 0.0, d: 1.0}
-    caster_joint_fr: {p: 100.0, i: 0.0, d: 1.0}
-    wheel_joint_bl: {p: 100.0, i: 0.0, d: 1.0}
-    caster_joint_bl: {p: 100.0, i: 0.0, d: 1.0}
-    wheel_joint_br: {p: 100.0, i: 0.0, d: 1.0}
-    caster_joint_br: {p: 100.0, i: 0.0, d: 1.0}
+    wheel_joint_fl: {p: 10.0, i: 5.0, d: 1.0}
+    caster_joint_fl: {p: 10.0, i: 5.0, d: 1.0}
+    wheel_joint_fr: {p: 10.0, i: 5.0, d: 1.0}
+    caster_joint_fr: {p: 10.0, i: 5.0, d: 1.0}
+    wheel_joint_bl: {p: 10.0, i: 5.0, d: 1.0}
+    caster_joint_bl: {p: 10.0, i: 5.0, d: 1.0}
+    wheel_joint_br: {p: 10.0, i: 5.0, d: 1.0}
+    caster_joint_br: {p: 10.0, i: 5.0, d: 1.0}
     
   type: steered_wheel_base_controller/SteeredWheelBaseController
 
