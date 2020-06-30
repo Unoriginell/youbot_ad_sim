@@ -1,0 +1,9 @@
+<launch>
+    <param name="use_sim_time" value="true"/>
+
+    <include file="$(find youbot_gazebo_robot)/launch/youbot_base_only_navigation.launch"/>
+    <include file="$(find youbot_ad_sim)/launch/slam/slam_gmapping_youbot.launch"/>
+    
+    <node pkg="rviz" type="rviz" name="autonomous_visualization" args="-d $(find youbot_ad_sim)/config/autonomous.rviz" />
+    <node pkg="keyboard_control" type="keyboard_control.py" name="keyboard_control"/>
+</launch>
