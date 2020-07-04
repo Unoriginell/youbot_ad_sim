@@ -8,6 +8,7 @@ import rospy
 from geometry_msgs.msg import Twist
 
 
+# function get_key taken from https://github.com/ros-teleop/teleop_twist_keyboard/blob/master/teleop_twist_keyboard.py
 def get_key():
     # tty.setraw changes file descriptor fd to raw, tty is used for terminal control functions
     tty.setraw(sys.stdin.fileno())
