@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+
+<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+       xmlns:xacro="http://www.ros.org/wiki/xacro/#interface">
+
+    <xacro:property name="sensor_height" value="0.02" />
+    <xacro:property name="sensor_width" value="0.045" />
+    <xacro:property name="sensor_depth" value="0.015" />
+
+  <xacro:include filename="$(find youbot_description)/urdf/sensors/hc_sr04_ultrasonic.gazebo.xacro" />
+    <xacro:macro name="hc_sr04_ultrasonic" params="name parent *origin ros_topic">
+    <joint name="${name}_hc_sr04_ultrasonic_joint" type="fixed">
+      <axis xyz="0 1 0" />
+      <xacro:insert_block name="origin" />
+      <parent link="${parent}_link"/>
+      <child link="${name}_link"/>
+    </joint>
+    
+    <link name="${name}_link" type="laser">
+      
+      <inertial>
+        <mass value="0.10" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <inertia ixx="0.1" ixy="0" ixz="0" iyy="0.1" iyz="0" izz="0.1" />
+      </inertial>
+      
+      <visual>
+        <origin xyz="0 0 ${sensor_height - (sensor_height/2)}" rpy="0 0 0" />
+        <geometry>
+          <box size="${sensor_depth} ${sensor_width} ${sensor_height}"/>
+        </geometry>
+        <material name="youBot/Blue">
+            <color rgba="0.0 0.0 0.8 1.0"/>
+        </material>
+      </visual>
+
+      <collision>
+        <origin xyz="0 0 ${sensor_height - (sensor_height/2)}" rpy="0 0 0" />
+        <geometry>
+          <box size="${sensor_depth} ${sensor_width} ${sensor_height}"/>
+        </geometry>
+      </collision>
+
+    </link>
+    <!-- gazebo extensions -->
+    <xacro:hc_sr04_ultrasonic_gazebo name="${name}" ros_topic="${ros_topic}"/>
+  </xacro:macro>
+</robot>

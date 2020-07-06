@@ -4,13 +4,13 @@
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
        xmlns:xacro="http://www.ros.org/wiki/xacro/#interface">
 
-
   <xacro:property name="camera_tower_height" value="0.06" />
   <xacro:property name="camera_tower_width" value="0.03" />
   <xacro:property name="camera_tower_depth" value="0.03" />
   
   <xacro:macro name="camera_tower_short" params="name parent *origin">
   	<link name="${name}_link">
+
       <inertial>
         <mass value="0.06" />
         <origin xyz="0 0 ${(camera_tower_height/2) - camera_tower_height}" rpy="0 0 0"/>

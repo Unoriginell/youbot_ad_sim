@@ -24,7 +24,7 @@
   <!-- sensors -->
   <xacro:include filename="$(find youbot_description)/urdf/sensors/hokuyo_urg04_laser.urdf.xacro"/>
   <xacro:include filename="$(find youbot_description)/urdf/sensors/asus_xtion_camera.urdf.xacro"/>
-  
+  <xacro:include filename="$(find youbot_description)/urdf/sensors/hc_sr04_ultrasonic.xacro"/>  
 
   <!-- Now we can start using the macros xacro:included above to define the actual youbot -->
 
@@ -56,11 +56,12 @@
     <origin xyz="-0.01 0.0 0.06" rpy="0 0 0" />
   </xacro:asus_xtion_camera>
 
+  <xacro:hc_sr04_ultrasonic name="ultrasonic_right" parent="base" ros_topic="ultrasonic/right">
+    <origin xyz="0 -0.172 -0.05" rpy="0 0 -1.57079633"/>
+  </xacro:hc_sr04_ultrasonic>
 
-  
-
-  
-
-
+  <xacro:hc_sr04_ultrasonic name="ultrasonic_left" parent="base" ros_topic="ultrasonic/left">
+    <origin xyz="0 0.172 -0.05" rpy="0 0 1.57079633"/>
+  </xacro:hc_sr04_ultrasonic>
 
 </robot>

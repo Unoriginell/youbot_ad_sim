@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+
+<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+       xmlns:xacro="http://www.ros.org/wiki/xacro/#interface">
+
+  <xacro:macro name="hc_sr04_ultrasonic_gazebo" params="name ros_topic">
+    <gazebo reference="${name}_link">
+      <sensor name="${name}" type="ray">
+		    <always_on>true</always_on>
+        <update_rate>50</update_rate>
+		    <pose>0 0 0 0 0 0</pose>
+		    <visualize>false</visualize>
+        <ray>
+          <horizontal>
+              <samples>1</samples>
+              <resolution>1.0</resolution>    
+              <min_angle>-7.5</min_angle>
+              <max_angle>7.5</max_angle>
+          </horizontal>
+          <range>
+            <min>0.02</min>
+            <max>4</max>
+			    </range>
+        </ray>
+
+        <plugin name="gazebo_ros_${name}_controller" filename="libgazebo_ros_range.so">
+          <gaussianNoise>0.005</gaussianNoise>
+          <alwaysOn>true</alwaysOn>
+          <updateRate>50</updateRate>
+          <topicName>${ros_topic}</topicName>
+          <frameName>/${name}_link</frameName>
+        </plugin>
+      </sensor>
+    </gazebo>
+  </xacro:macro>
+
+
+</robot>
