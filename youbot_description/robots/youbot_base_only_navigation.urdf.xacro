@@ -17,11 +17,14 @@
   
   <!-- materials for visualization -->
   <xacro:include filename="$(find youbot_description)/urdf/materials.urdf.xacro" />
+
+  <!-- misc-->
+  <xacro:include filename="$(find youbot_description)/urdf/misc/camera_tower_short.urdf.xacro"/>
 						     
   <!-- sensors -->
   <xacro:include filename="$(find youbot_description)/urdf/sensors/hokuyo_urg04_laser.urdf.xacro"/>
-  <xacro:include filename="$(find youbot_description)/urdf/sensors/hokuyo_urg04_laser2.urdf.xacro"/>
   <xacro:include filename="$(find youbot_description)/urdf/sensors/asus_xtion_camera.urdf.xacro"/>
+  
 
   <!-- Now we can start using the macros xacro:included above to define the actual youbot -->
 
@@ -36,25 +39,25 @@
   <xacro:youbot_base name="base"/>
   
   <!-- base laser front -->
-  <xacro:hokuyo_urg04_laser name="base_laser_front" parent="base" ros_topic="front_lidar_scan" update_rate="10" min_angle="-1.570796327" max_angle="1.570796327">
+  <xacro:hokuyo_urg04_laser name="base_laser_front" parent="base" ros_topic="lidar/front" update_rate="10" min_angle="-1.570796327" max_angle="1.570796327">
     <origin xyz="0.315 0 -0.03" rpy="0 0 0"/>
   </xacro:hokuyo_urg04_laser>
 
   <!-- base laser rear -->
-  <xacro:hokuyo_urg04_laser2 name="base_laser_rear" parent="base" ros_topic="rear_lidar_scan" update_rate="10" min_angle="-1.570796327" max_angle="1.570796327">
+  <xacro:hokuyo_urg04_laser name="base_laser_rear" parent="base" ros_topic="lidar/rear" update_rate="10" min_angle="-1.570796327" max_angle="1.570796327">
     <origin xyz="-0.315 0 -0.03" rpy="0 0 3.141592654"/>
-  </xacro:hokuyo_urg04_laser2>
+  </xacro:hokuyo_urg04_laser>
 
+  <xacro:camera_tower_short name="tower_cam3d" parent="base_link">
+    <origin xyz="0.21 0 0.0" rpy="0 0 0" />
+  </xacro:camera_tower_short>
 
-  <xacro:asus_xtion_camera name="cam3d" parent="base_link" tilt="0.35">
-    <origin xyz="0.21 0.0 0.03" rpy="0 0 0" />
+  <xacro:asus_xtion_camera name="cam3d" parent="tower_cam3d_link" tilt="0.15">
+    <origin xyz="-0.01 0.0 0.06" rpy="0 0 0" />
   </xacro:asus_xtion_camera>
 
 
-  <!-- <xacro:asus_xtion_camera name="tower_cam3d" parent="camera_tower_link" tilt="0.5">
-    <origin xyz="0 0 0.49" rpy="0 0 0" />
-  </xacro:asus_xtion_camera> -->
-
+  
 
   
 
